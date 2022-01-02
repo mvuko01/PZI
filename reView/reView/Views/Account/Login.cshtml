@@ -1,4 +1,4 @@
-﻿@model reView.ViewModels.RegisterViewModel
+﻿@model reView.ViewModels.LogInViewModel
 
 
 
@@ -8,41 +8,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
-    <link rel="stylesheet" href="/css/register.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="form_container">
-        <div class="title">Registration</div>
+        <div class="title">Login</div>
         <form method="post">
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details">Username</span>
-                    <input asp-for="Username" type="text" placeholder="Enter your username" required>
-                </div>
-                <div class="input-box">
                     <span class="details">Email</span>
                     <input asp-for="Email" type="text" placeholder="Enter your email" required>
+                    <span asp-validation-for="Email"></span>
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
                     <input asp-for="Password" type="password" placeholder="Enter your password" required>
-                </div>
-                <div class="input-box">
-                    <span class="details">Confirm Password</span>
-                    <input asp-for="ConfirmPassword" type="password" placeholder="Confirm your password" required>
+                    <span asp-validation-for="Password"></span>
                 </div>
             </div>
             <div asp-validation-summary="All"></div>
             <div class="button">
-                <input type="submit" value="Register">
+                <input type="submit" value="Login">
             </div>
         </form>
     </div>
 
-    
+    <script src="/js/hamburger.js"></script>
 </body>
 </html>

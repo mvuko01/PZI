@@ -386,3 +386,4 @@ C:\Users\Matej\Desktop\Projekt PZI\PZI\reView\reView\bin\Debug\net5.0\Microsoft.
 C:\Users\Matej\Desktop\Projekt PZI\PZI\reView\reView\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Matej\Desktop\Projekt PZI\PZI\reView\reView\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Matej\Desktop\Projekt PZI\PZI\reView\reView\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Matej\Desktop\Projekt PZI\PZI\reView\reView\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
