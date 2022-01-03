@@ -1,0 +1,36 @@
+﻿@model IEnumerable<reView.Models.Item>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/listitems.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <section class="menu" id="menu">
+        <div class="box-container">
+            
+            @foreach (var obj in Model)
+            {
+                <div class="box">
+                    <img src="@("/assets/"+obj.MainPicture)" alt="">
+                    <strong>@obj.Name</strong>
+                    <span class="price">$@obj.Price</span>
+                    <a href="@obj.Name" class="btn">View</a>
+                </div>
+            }
+
+
+        </div>
+    </section>
+
+
+</body>
+</html>

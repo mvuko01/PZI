@@ -13,5 +13,6 @@ namespace reView.Models
 
         public string Name { get; set; }
 
+        public List<Item> Item { get; set; }
     }
 }
