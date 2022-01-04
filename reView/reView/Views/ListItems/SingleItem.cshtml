@@ -1,0 +1,89 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/singleitem.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main>
+        <div id="slider">
+            <div id="slider-main-picture-container">
+                <img alt="picture" src="/assets/main_oneplus9pro.png" />
+            </div>
+            <div id="slider-thumbnails-container">
+                <div class="thumbnail selected" data-large-img-url="/assets/main_oneplus9pro.png">
+                    <img src="/assets/main_oneplus9pro.png" alt="onepluspro" />
+                </div>
+                <div class="thumbnail" data-large-img-url="/assets/main_iphone_12.png">
+                    <img src="/assets/main_iphone_12.png" alt="steelarctis" />
+                </div>
+            </div>
+        </div>
+        <div id="information">
+            <h1 id="information-title">Iphone 12</h1>
+            <label id="price">$300</label>
+            <div id="description">
+                <h3 id="description-tittle">Product details</h3>
+                <p id="description-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </main>
+    <section id="review-section">
+        <h2 id="review-section-title">Reviews</h2>
+
+        <span>New Review:</span>
+        <form action="">
+            <textarea id="review-input" type="text"></textarea>
+            <div class="submit-button">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+        <div id="comment-container">
+            <div class="comment">
+                <div class="comment-user">
+                    <img src="/assets/user.png" alt="userpic">
+                    <h4 class="comment-username">Matej</h4>
+                </div>
+                <p class="comment-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </p>
+            </div>
+            <div class="comment">
+                <div class="comment-user">
+                    <img src="/assets/user.png" alt="userpic">
+                    <h4 class="comment-username">Matej</h4>
+                </div>
+                <p id="comment-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="/js/mainpicture.js"></script>
+</body>
+</html>

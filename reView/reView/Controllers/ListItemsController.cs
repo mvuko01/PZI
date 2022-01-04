@@ -48,7 +48,10 @@ namespace reView.Controllers
         }
 
 
-        public IActionResult Index()
+       
+
+        [HttpGet]
+        public IActionResult SingleItem()
         {
             return View();
         }
