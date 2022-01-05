@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,5 +24,9 @@ namespace reView.Models
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public List<Review> Review { get; set; }
+
+       
     }
 }

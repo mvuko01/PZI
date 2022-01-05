@@ -51,9 +51,15 @@ namespace reView.Controllers
        
 
         [HttpGet]
-        public IActionResult SingleItem()
+        public IActionResult SingleItem(int ID)
         {
-            return View();
+            var itemId = ID;
+            var itemIdParamater = new SqlParameter("@Id", itemId);
+            var obj = _db.Item.FromSqlRaw("SELECT * FROM Item WHERE Id=@Id", itemIdParamater).FirstOrDefault();
+
+            return View(obj);
         }
+
+        
     }
 }

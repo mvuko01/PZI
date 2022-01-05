@@ -76,16 +76,12 @@ main {
 
 #information #information-title {
     padding-top: 30px;
-    padding-bottom: 30px;
-}
-#information #price {
-    padding-bottom: 25px;
+    
 }
 
+
 #information {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+   
 }
 
 #review-section {
@@ -95,9 +91,7 @@ main {
     display: flex;
     flex-direction: column;
 }
-#review-section-title {
-    padding-bottom: 15px;
-}
+
 
 #review-section form {
     height: auto;
@@ -119,14 +113,12 @@ main {
     padding: 2rem 0;
 }
 
-#comment-container .comment {
-    padding-bottom: 30px;
-}
+
 
 #comment-container .comment-user {
     display: flex;
     align-items: center;
-    padding-bottom: 5px;
+    
 }
 
 #comment-container .comment-username {

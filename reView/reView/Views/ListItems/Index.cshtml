@@ -23,7 +23,8 @@
                     <img src="@("/assets/"+obj.MainPicture)" alt="">
                     <strong>@obj.Name</strong>
                     <span class="price">$@obj.Price</span>
-                    <a href="@obj.Name" class="btn">View</a>
+                    
+                    <a asp-action="SingleItem" asp-controller="ListItems" asp-route-id="@obj.Id" class="btn">View</a>
                 </div>
             }
 
