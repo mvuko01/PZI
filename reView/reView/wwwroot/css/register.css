@@ -6,11 +6,9 @@
 }
 
 body {
-    
-    
     height: 100vh;
-    
-    background: linear-gradient(135deg, #615f61 35%, #f2f2f1 );
+    /*background-color: lightgray;*/
+     background: linear-gradient(135deg, #615f61 20%, #f2f2f1 );
 }
 
 

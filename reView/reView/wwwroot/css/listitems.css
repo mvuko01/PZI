@@ -7,7 +7,7 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(135deg, #615f61 35%, #ffff );
+    background-color: white;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -26,6 +26,8 @@ body {
     margin-top: 50px; */
 }
 
+
+
 .menu .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -33,18 +35,13 @@ body {
     gap: 1.5rem;
     border-radius: 5px;
     padding: 5%;
-
     max-width: 1300px;
     min-height: 1500px;
     justify-items: center;
     justify-content: center;
     align-items: start;
-
     width: 100%;
-    background-color: #505050;
-    
-    
-        
+    background-color: dimgray;
 }
 
 
@@ -64,7 +61,7 @@ body {
     border: 4px solid #FF5F15; 2 ideja*/
 
     border: 3px solid #FF5F15;
-    background-color: #ffc680;
+    background-color: whitesmoke;
 }
 
 .menu .box-container .box img {
@@ -101,7 +98,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    background-color: #505050;
+    background-color: #fc6015;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 1px;

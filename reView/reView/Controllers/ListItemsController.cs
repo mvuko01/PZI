@@ -84,13 +84,15 @@ namespace reView.Controllers
             //ReviewViewModel myViewModel = new ReviewViewModel();
             //myViewModel.Item = obj;
 
-            
 
-            var user = await userManager.GetUserAsync(User);
-            model.ReviewToPost.ApplicationUser = user;
+            if (model.ReviewToPost.Text != null)
+            {
+                var user = await userManager.GetUserAsync(User);
+                model.ReviewToPost.ApplicationUser = user;
 
-            _db.Review.Add(model.ReviewToPost);
-            _db.SaveChanges();
+                _db.Review.Add(model.ReviewToPost);
+                _db.SaveChanges();
+            }
 
             IEnumerable<Review> reviews = _db.Review.FromSqlRaw("SELECT * FROM Review WHERE ItemId=@Id", itemIdParamater).ToList();
             PostAndListVm site = new PostAndListVm();

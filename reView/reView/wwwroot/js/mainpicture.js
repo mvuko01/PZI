@@ -21,3 +21,7 @@ function selectThumbnail(thumbnail) {
     let mainImage = document.querySelector("#slider-main-picture-container img");
     mainImage.src = clickedLargeImagePath;
 }
+
+
+
+
