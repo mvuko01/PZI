@@ -10,8 +10,8 @@ using reView.Data;
 namespace reView.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220105115444_extendIdentity")]
-    partial class extendIdentity
+    [Migration("20220105183756_fixed2")]
+    partial class fixed2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -277,23 +277,20 @@ namespace reView.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("ItemId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Review");
                 });
@@ -369,15 +366,15 @@ namespace reView.Migrations
 
             modelBuilder.Entity("reView.Models.Review", b =>
                 {
-                    b.HasOne("reView.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("Review")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("reView.Models.Item", "Item")
                         .WithMany("Review")
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("reView.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Review")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("ApplicationUser");
 

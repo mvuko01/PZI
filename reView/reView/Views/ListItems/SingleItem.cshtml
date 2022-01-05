@@ -1,6 +1,11 @@
-﻿@model Item
+﻿@model reView.ViewModels.PostAndListVm
 @inject SignInManager<ApplicationUser> signInManager;
+@inject UserManager<ApplicationUser> userManager
 
+@{
+    var Item = ViewBag.Item;
+
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,24 +23,24 @@
     <main>
         <div id="slider">
             <div id="slider-main-picture-container">
-                <img alt="picture" src="@("/assets/"+Model.MainPicture)" />
+                <img alt="picture" src="@("/assets/"+Item.MainPicture)" />
             </div>
             <div id="slider-thumbnails-container">
-                <div class="thumbnail selected" data-large-img-url="@("/assets/"+Model.MainPicture)">
-                    <img src="@("/assets/"+Model.MainPicture)" alt="onepluspro" />
+                <div class="thumbnail selected" data-large-img-url="@("/assets/"+Item.MainPicture)">
+                    <img src="@("/assets/"+Item.MainPicture)" alt="onepluspro" />
                 </div>
-                <div class="thumbnail" data-large-img-url="@("/assets/"+Model.SecondPicture)">
-                    <img src="@("/assets/"+Model.SecondPicture)" alt="steelarctis" />
+                <div class="thumbnail" data-large-img-url="@("/assets/"+Item.SecondPicture)">
+                    <img src="@("/assets/"+Item.SecondPicture)" alt="steelarctis" />
                 </div>
             </div>
         </div>
         <div id="information">
-            <h1 id="information-title">@Model.Name</h1>
-            <label id="price">$@Model.Price</label>
+            <h1 id="information-title">@Item.Name</h1>
+            <label id="price">$@Item.Price</label>
             <div id="description">
                 <h3 id="description-tittle">Product details</h3>
                 <p id="description-text">
-                    @Model.Description
+                    @Item.Description
                 </p>
             </div>
         </div>
@@ -44,39 +49,34 @@
         <h2 id="review-section-title">Reviews</h2>
         @if (signInManager.IsSignedIn(User))
         {
+           
+
             <span>New Review:</span>
-            <form action="">
-                <textarea id="review-input" type="text"></textarea>
+            <form method="post">
+                <textarea asp-for="ReviewToPost.Text" id="review-input" type="text"></textarea>
+                <input asp-for="ReviewToPost.ItemId" value="@Item.Id" type="hidden" />
                 <div class="submit-button">
-                    <input type="submit" value="Submit">
+                    <input asp-route-id="@Item.Id" type="submit" value="Submit">
                 </div>
             </form>
         }
         <div id="comment-container">
-            <div class="comment">
-                <div class="comment-user">
-                    <img src="/assets/user.png" alt="userpic">
-                    <h4 class="comment-username">Matej</h4>
+            @foreach (var obj in Model.Reviews)
+            {
+                var user = await userManager.FindByIdAsync(obj.UserId);
+                obj.ApplicationUser = user;
+
+                <div class="comment">
+                    <div class="comment-user">
+                        <img src="/assets/user.png" alt="userpic">
+                        <h4 class="comment-username">@obj.ApplicationUser.UserName</h4>
+                    </div>
+                    <p class="comment-text">
+                        @obj.Text
+                    </p>
                 </div>
-                <p class="comment-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                </p>
-            </div>
-            <div class="comment">
-                <div class="comment-user">
-                    <img src="/assets/user.png" alt="userpic">
-                    <h4 class="comment-username">Matej</h4>
-                </div>
-                <p id="comment-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                </p>
-            </div>
+            }
+            
 
         </div>
     </section>

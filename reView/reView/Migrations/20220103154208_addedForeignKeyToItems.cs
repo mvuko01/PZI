@@ -10,7 +10,7 @@ namespace reView.Migrations
                 name: "CategoryId",
                 table: "Item",
                 type: "int",
-                nullable: false,
+                nullable: true,
                 defaultValue: 0);
 
             migrationBuilder.CreateIndex(

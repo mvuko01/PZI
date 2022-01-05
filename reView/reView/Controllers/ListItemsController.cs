@@ -17,9 +17,11 @@ namespace reView.Controllers
     public class ListItemsController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public ListItemsController(ApplicationDbContext db)
+        public ListItemsController(ApplicationDbContext db, UserManager<ApplicationUser> userManager)
         {
+            this.userManager = userManager;
             _db = db;
         }
 
@@ -50,16 +52,53 @@ namespace reView.Controllers
 
        
 
-        [HttpGet]
+        [HttpGet]    
         public IActionResult SingleItem(int ID)
         {
             var itemId = ID;
             var itemIdParamater = new SqlParameter("@Id", itemId);
-            var obj = _db.Item.FromSqlRaw("SELECT * FROM Item WHERE Id=@Id", itemIdParamater).FirstOrDefault();
+            var item_obj = _db.Item.FromSqlRaw("SELECT * FROM Item WHERE Id=@Id", itemIdParamater).FirstOrDefault();
 
-            return View(obj);
+            ViewBag.Item = item_obj;
+
+            IEnumerable <Review> reviews = _db.Review.FromSqlRaw("SELECT * FROM Review WHERE ItemId=@Id", itemIdParamater).ToList();
+            PostAndListVm site = new PostAndListVm();
+            site.Reviews = reviews;
+
+            return View(site);
+
         }
 
-        
+        [HttpPost]
+        public async Task<IActionResult> SingleItem(PostAndListVm model)
+        {
+            var itemId = model.ReviewToPost.ItemId;
+            var itemIdParamater = new SqlParameter("@Id", itemId);
+            var item_obj = _db.Item.FromSqlRaw("SELECT * FROM Item WHERE Id=@Id", itemIdParamater).FirstOrDefault();
+            ViewBag.Item = item_obj;
+
+            //var itemId = ID;
+            //var itemIdParamater = new SqlParameter("@Id", itemId);
+            //var obj = _db.Item.FromSqlRaw("SELECT * FROM Item WHERE Id=@Id", itemIdParamater).FirstOrDefault();
+
+            //ReviewViewModel myViewModel = new ReviewViewModel();
+            //myViewModel.Item = obj;
+
+            
+
+            var user = await userManager.GetUserAsync(User);
+            model.ReviewToPost.ApplicationUser = user;
+
+            _db.Review.Add(model.ReviewToPost);
+            _db.SaveChanges();
+
+            IEnumerable<Review> reviews = _db.Review.FromSqlRaw("SELECT * FROM Review WHERE ItemId=@Id", itemIdParamater).ToList();
+            PostAndListVm site = new PostAndListVm();
+            site.Reviews = reviews;
+
+            return View(site);
+
+           
+        }
     }
 }

@@ -15,8 +15,18 @@ namespace reView.Data
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Review>()
+                        .HasOne(x => x.ApplicationUser)
+                        .WithMany(x => x.Review);
+        }
+
         public DbSet<Category> Category { get; set; }
         public DbSet<Item> Item { get; set; }
         public DbSet<Review> Review { get; set; }
+        
     }
 }
