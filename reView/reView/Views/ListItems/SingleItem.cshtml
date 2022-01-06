@@ -52,8 +52,8 @@
 
 
             <span>New Review:</span>
-            <form method="post">
-                <textarea asp-for="ReviewToPost.Text" id="review-input" type="text"></textarea>
+            <form  method="post">
+                <textarea  asp-for="ReviewToPost.Text" id="review-input" type="text"></textarea>
                 <input asp-for="ReviewToPost.ItemId" value="@Item.Id" type="hidden" />
                 <div class="submit-button">
                     <input  asp-route-id="@Item.Id" type="submit" value="Submit">

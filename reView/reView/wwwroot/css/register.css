@@ -107,7 +107,8 @@ form .button input:hover {
         width: 100%;
     }
     .form_container {
-        width: 60%;
+        width: 70%;
+        top: 60%;
     }
 }
 
